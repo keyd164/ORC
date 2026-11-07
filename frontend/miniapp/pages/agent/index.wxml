@@ -1,0 +1,16 @@
+<view class="page">
+  <view class="card"><text class="section-title">本地业务分析</text><view class="muted">数据库计算金额，回答附来源；只读工具不修改账单。规则模式无需模型。Ollama 模式需电脑配置本地模型。</view>
+    <picker range="{{modes}}" value="{{modeIndex}}" bindchange="mode" disabled="{{busy}}"><view class="picker">{{modes[modeIndex]}}　›</view></picker>
+    <textarea style="width:100%;margin-top:24rpx" maxlength="1000" auto-height value="{{question}}" bindinput="input" disabled="{{busy}}" placeholder="例如：查询今天实收合计和异常账单"/>
+    <button bindtap="ask" loading="{{busy}}" disabled="{{busy || !question}}">开始分析</button>
+  </view>
+  <view class="error" wx:if="{{error}}">{{error}}</view>
+  <view class="card" wx:if="{{result}}"><text class="section-title">{{result.mode==='rules'?'规则查询结果':'本地模型规划结果'}}</text><view class="muted">{{result.status}} · {{result.created_at}}</view><text class="mono" selectable>{{result.answer || result.error_message}}</text>
+    <button wx:if="{{result.status==='completed'}}" class="secondary" bindtap="report" disabled="{{busy}}">下载分析报告</button>
+    <button wx:if="{{result.status==='failed' || result.status==='interrupted'}}" class="secondary" bindtap="retry" disabled="{{busy}}">从已保存进度重试</button>
+    <button wx:if="{{reportFile}}" class="secondary" bindtap="saveReport" disabled="{{busy}}">打开报告文件菜单，手动保存</button>
+    <view class="line"><text class="section-title">数据来源</text><view wx:for="{{result.sources}}" wx:key="index" class="line"><button wx:if="{{item.url}}" class="small secondary" data-index="{{index}}" bindtap="source">{{item.label}}</button><text wx:else class="muted">{{item.label}} · {{item.start}} — {{item.end}}</text></view></view>
+    <text class="section-title">执行日志</text><view class="muted line" wx:for="{{result.steps}}" wx:key="id">{{item.node}} / {{item.tool || '—'}} · {{item.status}} · {{item.elapsed_ms}}ms <text>{{item.error_message}}</text></view>
+  </view>
+  <view class="card"><text class="section-title">最近分析</text><button wx:for="{{history}}" wx:key="id" class="secondary" data-id="{{item.id}}" bindtap="open" disabled="{{busy}}">{{item.question}} · {{item.status}}</button><view class="empty" wx:if="{{!history.length}}">暂无分析记录。</view><button class="secondary" bindtap="refresh" loading="{{busy}}">刷新历史</button></view>
+</view>

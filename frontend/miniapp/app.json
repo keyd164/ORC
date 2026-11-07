@@ -1,0 +1,44 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/upload/index",
+    "pages/records/index",
+    "pages/manage/index",
+    "pages/bills/index",
+    "pages/detail/index",
+    "pages/exceptions/index",
+    "pages/stats/index",
+    "pages/settings/index",
+    "pages/agent/index"
+  ],
+  "window": {
+    "navigationBarTitleText": "KTV 账单",
+    "navigationBarBackgroundColor": "#123f35",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f3f6f4"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "#70847b",
+    "selectedColor": "#11634d",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/records/index",
+        "text": "上传记录"
+      },
+      {
+        "pagePath": "pages/manage/index",
+        "text": "数据管理"
+      },
+      {
+        "pagePath": "pages/settings/index",
+        "text": "设置"
+      }
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "ktv-miniapp-tests",
+  "version": "0.2.0",
+  "private": true,
+  "scripts": { "test": "node --test *.test.cjs", "compile": "node compile.cjs" },
+  "devDependencies": { "miniprogram-compiler": "0.2.3" }
+}

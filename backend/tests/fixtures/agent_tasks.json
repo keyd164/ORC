@@ -1,0 +1,16 @@
+{
+  "reference_date": "2026-10-26",
+  "scope": "规则模式的意图路由和日期解析，不是大模型任务成功率",
+  "cases": [
+    {"question":"统计本月实收合计","tools":["summary"],"start":"2026-10-01","end":"2026-10-26"},
+    {"question":"统计上月实收合计","tools":["summary"],"start":"2026-09-01","end":"2026-09-30"},
+    {"question":"统计本月消费最高的房间，并找出金额异常的账单","tools":["rooms","exceptions"],"start":"2026-10-01","end":"2026-10-26"},
+    {"question":"查询昨天账单明细","tools":["bills"],"start":"2026-10-25","end":"2026-10-25"},
+    {"question":"统计最近7天实收合计","tools":["summary"],"start":"2026-10-20","end":"2026-10-26"},
+    {"question":"营业额口径是什么","tools":["documents"],"start":"2026-10-26","end":"2026-10-26"},
+    {"question":"查询2026-10-01至2026-10-25账单明细","tools":["bills"],"start":"2026-10-01","end":"2026-10-25"},
+    {"question":"删除所有账单","reject":true},
+    {"question":"查询2026-10-26至2026-10-01账单明细","reject":true},
+    {"question":"统计全部历史实收合计","reject":true}
+  ]
+}

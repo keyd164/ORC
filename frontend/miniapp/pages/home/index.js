@@ -1,0 +1,2 @@
+const {request}=require('../../utils/api');const ui=require('../../utils/ui');
+Page({data:{busy:false,error:'',summary:null,date:ui.today()},onShow(){this.setData({date:ui.today()});this.refresh();},refresh(){return ui.safe(this,async()=>{const s=await request('/dashboard/summary?business_date='+this.data.date);this.setData({summary:{...s,money:ui.money(s.received_amount)}});});},collect(){ui.navigate('/pages/upload/index');},manage(){wx.switchTab({url:'/pages/manage/index'});},settings(){wx.switchTab({url:'/pages/settings/index'});}});

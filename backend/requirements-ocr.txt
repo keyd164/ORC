@@ -1,0 +1,4 @@
+-r requirements.txt
+paddlepaddle>=3.2,<4
+paddleocr>=3.0,<4
+opencv-python-headless>=4.10,<5
